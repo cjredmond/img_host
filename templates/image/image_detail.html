@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>
+  {{ image.title }}
+  <img class="smaller" src="{{ MEDIA_URL }}{{ image.image_url }}" alt="" />
+</p>
+
+ {% for x in comms %}
+ {{ x.body }}-{{ x.user }}<br>
+ {% endfor %}
+
+ <form class="" action="{%  url 'comment_create_view' image.id %}" method="post">
+       {% csrf_token %}
+        <input type="text" name="body" value="">
+        <input type="submit" name="" value="Submit">
+      </form>
+<hr>
+
+<a href="{% url 'image_detail_view' prev_page %}">PREV</a>
+<a href="{% url 'image_detail_view' next_page %}">NEXT</a>
+{% endblock %}
