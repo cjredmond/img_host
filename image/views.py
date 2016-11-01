@@ -40,7 +40,19 @@ class ImageDetailView(DetailView):
         y = x.get(id=self.kwargs['pk'])
         z = y.id
         next_page = z + 1
+        # def next_page_x(self):
+        #     q = z + 1
+        #     while not x.get(id=q):
+        #         q += 1
+        #     return q
+
         prev_page = z - 1
+        # def prev_page_x(self):
+        #     q = z - 1
+        #     while not x.get(id=q):
+        #         q -= 1
+        #     return q
+
         def get_left(self):
             if prev_page == 0:
                 return False

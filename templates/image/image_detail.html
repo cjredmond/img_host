@@ -9,8 +9,12 @@
 </div>
 <div class="col-md-6">
   <div class="center">
+    {% if left %}
     <a href="{% url 'image_detail_view' prev_page %}">PREV</a> |
+    {% endif %}
+    {% if right %}
     <a href="{% url 'image_detail_view' next_page %}">NEXT</a>
+    {% endif %}
   </div>
   <h2 class="center">{{ image.title }}</h2>
   <div class="thumbnail">
