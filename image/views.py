@@ -22,6 +22,11 @@ class ImageCreateView(CreateView):
         instance.user = self.request.user
         return super().form_valid(form)
 
+class ImageUpdateView(UpdateView):
+    model = Image
+    success_url = "/"
+    fields = ('title', 'description', 'graphic', 'picture')
+
 class IndexView(ListView):
     model = Image
     paginate_by = 3
@@ -34,11 +39,25 @@ class ImageDetailView(DetailView):
         x = Image.objects.all()
         y = x.get(id=self.kwargs['pk'])
         z = y.id
-        #next_issue = Issue.get_next_by_number(issue, title=title)
-        def get_next_by_time(self):
-            return
         next_page = z + 1
         prev_page = z - 1
+        def get_left(self):
+            if prev_page == 0:
+                return False
+            left = x.get(id=prev_page)
+            return left
+
+
+        def get_right(self):
+            var = x.count() + 1
+            if next_page >= var:
+                return False
+            right = x.get(id=next_page)
+            return right
+        #left = x.get(id=prev_page)
+
+        context['left'] = get_left(self)
+        context['right'] = get_right(self)
         context['prev_page'] = prev_page
         context['next_page'] = next_page
         context['comms'] = comms

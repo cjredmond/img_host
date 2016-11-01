@@ -1,17 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Hi</h1>
-<div class="row">
-{% for x in object_list %}
-<div class="col-sm-4">
-{{ x.title }}
-<div class="">
-  <a href="{% url 'image_detail_view' x.id %}">
-<img class="smaller" src="{{ MEDIA_URL }}{{ x.image_url }}" alt="" /></a>
-</div>
-</div>
-{% endfor %}
-<hr>
 
 {% if is_paginated %}
   <nav>
@@ -52,6 +40,19 @@
     </ul>
 </nav>
 {% endif %}
+
+<div class="row">
+{% for x in object_list %}
+<div class="col-sm-4 item">
+
+<div class="">
+  <a href="{% url 'image_detail_view' x.id %}">
+<img class="smaller" src="{{ MEDIA_URL }}{{ x.image_url }}" alt="" /></a>
+</div>
+</div>
+{% endfor %}
+<hr>
+
 
 </div>
 {% endblock %}

@@ -1,8 +1,37 @@
-body {
-  color: red;
+.item {
+  height: 45vh;
+  width: 60vh;
+
+}
+.smaller {
+  max-height: 40vh;
+  max-width: 50vh;
+  min-width: 50vh;
+  min-height: 40vh;
 }
 
-.smaller {
-  max-height: 50vh;
-  max-width: 50vh;
+.medium {
+  max-width: 80vh;
+  max-height: 80vh;
+}
+
+.blank {
+  height: 10px;
+}
+
+.center {
+  text-align: center;
+  color: blue;
+}
+
+.left {
+  padding-top: 40vh;
+  max-width: 100px;
+  max-width: 100px;
+}
+
+.right {
+  padding-top: 40vh;
+  max-width: 100px;
+  max-width: 100px;
 }
