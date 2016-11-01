@@ -4,10 +4,10 @@
 
 }
 .smaller {
-  max-height: 40vh;
+  max-height: 45vh;
   max-width: 50vh;
   min-width: 50vh;
-  min-height: 40vh;
+  min-height: 45vh;
 }
 
 .medium {
