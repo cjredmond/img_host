@@ -40,40 +40,30 @@ class ImageDetailView(DetailView):
         y = x.get(id=self.kwargs['pk'])
         z = y.id
         next_page = z + 1
-        # def next_page_x(self):
-        #     q = z + 1
-        #     while not x.get(id=q):
-        #         q += 1
-        #     return q
-
         prev_page = z - 1
-        # def prev_page_x(self):
-        #     q = z - 1
-        #     while not x.get(id=q):
-        #         q -= 1
-        #     return q
+        stopper_end = Image.objects.last().id
+        stopper_start = Image.objects.first().id
+        
+        def next_right_x(self):
+            current_id = z
+            while current_id < stopper_end:
+                current_id += 1
+                if x.get(id=current_id):
+                    return current_id
+            return stopper_start
 
-        def get_left(self):
-            if prev_page == 0:
-                return False
-            left = x.get(id=prev_page)
-            return left
+        def next_left_x(self):
+            current_id = z
+            while current_id > 1:
+                current_id -= 1
+                if x.get(id=current_id):
+                    return current_id
+            return stopper_end
 
 
-        def get_right(self):
-            var = x.count() + 1
-            if next_page >= var:
-                return False
-            right = x.get(id=next_page)
-            return right
-        #left = x.get(id=prev_page)
-
-        context['left'] = get_left(self)
-        context['right'] = get_right(self)
-        context['prev_page'] = prev_page
-        context['next_page'] = next_page
         context['comms'] = comms
-        context['x'] = z
+        context['left_obj'] = x.get(id=next_left_x(self))
+        context['right_obj'] = x.get(id=next_right_x(self))
 
         return context
 
