@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from image.models import Image, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse, reverse_lazy
+from django.core.exceptions import ObjectDoesNotExist
 
 class UserCreateView(CreateView):
     model = User
@@ -43,21 +44,28 @@ class ImageDetailView(DetailView):
         prev_page = z - 1
         stopper_end = Image.objects.last().id
         stopper_start = Image.objects.first().id
-        
+
         def next_right_x(self):
             current_id = z
             while current_id < stopper_end:
                 current_id += 1
-                if x.get(id=current_id):
-                    return current_id
+                try:
+                    if x.get(id=current_id):
+                        return current_id
+                except ObjectDoesNotExist:
+                    pass
             return stopper_start
 
         def next_left_x(self):
             current_id = z
             while current_id > 1:
                 current_id -= 1
-                if x.get(id=current_id):
-                    return current_id
+                try:
+                    if x.get(id=current_id):
+                        return current_id
+                except ObjectDoesNotExist:
+                    pass
+
             return stopper_end
 
 
