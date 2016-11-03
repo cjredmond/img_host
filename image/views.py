@@ -30,7 +30,7 @@ class ImageUpdateView(UpdateView):
 
 class IndexView(ListView):
     model = Image
-    paginate_by = 3
+    paginate_by = 6
 
 class ImageDetailView(DetailView):
     model = Image
