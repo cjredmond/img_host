@@ -23,14 +23,14 @@
     <form class="" action="{% url 'image_upvote_view' image.id %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="value" value="true">
-    <input type="submit" name="" value="+" class="btn btn-success btn-sm">
+    <input type="submit" name="" value="+" class="btn btn-primary btn-sm">
     </form>
   </div>
   <div class="col-md-1">
     <form class="" action="{% url 'image_downvote_view' image.id %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="value" value="false">
-    <input type="submit" name="" value="--" class="btn btn-success btn-sm">
+    <input type="submit" name="" value="--" class="btn btn-danger btn-sm">
     </form>
   </div>
   <div class="col-md-8"></div>

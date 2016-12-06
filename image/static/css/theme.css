@@ -9,6 +9,14 @@
   min-width: 50vh;
 }
 
+.smaller:hover {
+  max-height: 40vh;
+  min-height: 40vh;
+  max-width: 50vh;
+  min-width: 50vh;
+  border: 4px solid red;
+}
+
 .medium {
   height: 70vh !important;
 }
@@ -50,4 +58,8 @@
 
 .comm {
   border-bottom: 1px solid silver;
+}
+
+.over {
+  border: 2px solid red;
 }
