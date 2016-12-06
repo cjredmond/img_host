@@ -33,3 +33,21 @@
   max-width: 100px;
   max-width: 100px;
 }
+
+.navbar {
+  background-color: silver;
+  border-bottom: 2px solid blue;
+}
+
+.score {
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+
+.score_number {
+  font-size: 30px;
+}
+
+.comm {
+  border-bottom: 1px solid silver;
+}

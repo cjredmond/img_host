@@ -17,15 +17,18 @@ class Image(models.Model):
             return self.picture.url
         return "http://images.clipartpanda.com/animated-question-mark-for-powerpoint-1256186461796715642question-mark-icon.svg.hi.png"
 
+    def score(self):
+        return sum([vote.score for vote in self.vote_set.all()])
+
 class Comment(models.Model):
     user = models.ForeignKey('auth.User')
     body = models.CharField(max_length=140)
     image = models.ForeignKey(Image)
     time = models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self):
         return str(self.user)
+
 
 class Vote(models.Model):
     user = models.ForeignKey('auth.User')
