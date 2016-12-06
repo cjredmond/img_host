@@ -26,3 +26,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+class Vote(models.Model):
+    user = models.ForeignKey('auth.User')
+    image = models.ForeignKey(Image)
+    value = models.BooleanField()
+
+    class Meta:
+        unique_together = ('user', 'image')
+
+    @property
+    def score(self):
+        if self.value:
+            return 1
+        return -1
