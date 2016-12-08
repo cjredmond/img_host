@@ -73,6 +73,7 @@ class ImageDetailView(DetailView):
         context['left_obj'] = x.get(id=next_left_x(self))
         context['right_obj'] = x.get(id=next_right_x(self))
         context['neg_score'] = y.score() * -1
+        context['vote'] = Vote.objects.filter(user=self.request.user, image=y)
 
         return context
 

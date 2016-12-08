@@ -29,6 +29,9 @@ class Comment(models.Model):
     def __str__(self):
         return str(self.user)
 
+    def score(self):
+        return sum([vote.score for vote in self.vote_set.all()])
+
 
 class Vote(models.Model):
     user = models.ForeignKey('auth.User')
@@ -37,6 +40,20 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('user', 'image')
+
+    @property
+    def score(self):
+        if self.value:
+            return 1
+        return -1
+
+class CommentVote(models.Model):
+    user = models.ForeignKey('auth.User')
+    comment = models.ForeignKey(Comment)
+    value = models.BooleanField()
+
+    class Meta:
+        unique_together = ('user', 'comment')
 
     @property
     def score(self):

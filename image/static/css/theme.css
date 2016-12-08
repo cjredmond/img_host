@@ -34,6 +34,7 @@
   padding-top: 40vh;
   max-width: 100px;
   max-width: 100px;
+  min-height: 80px;
 }
 
 .right {
@@ -62,4 +63,8 @@
 
 .over {
   border: 2px solid red;
+}
+
+.resize-btn {
+  width: 40px !important;
 }
