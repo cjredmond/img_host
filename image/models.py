@@ -32,7 +32,7 @@ class Comment(models.Model):
         return str(self.user)
 
     def score(self):
-        return sum([vote.score for vote in self.vote_set.all()])
+        return sum([vote.score for vote in self.commentvote_set.all()])
 
     @property
     # def time_ago(self):

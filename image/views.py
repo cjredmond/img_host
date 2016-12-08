@@ -112,8 +112,8 @@ class CommentVoteView(CreateView):
     model = CommentVote
     fields = ('value',)
     def get_success_url(self, **kwargs):
-        target = Image.objects.get(id=self.kwargs['pk'])
-        return reverse_lazy('image_detail_view', args=(target.id,))
+        target = Comment.objects.get(id=self.kwargs['pk'])
+        return reverse_lazy('image_detail_view', args=(target.image.id,))
 
     def form_valid(self, form):
         try:

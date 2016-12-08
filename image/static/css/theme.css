@@ -83,7 +83,7 @@ body {
 }
 
 .comment-input {
-  width: 450px;
+  width: 400px;
   height: 40px;
   font-size: 16px;
   background-color: grey;
@@ -106,4 +106,18 @@ body {
 .comment-btn {
   height: 5px !important;
   width: 10px !important;
+}
+
+.comm-like {
+  margin-top: 19px;
+}
+.comm-placeholder {
+  height: 42px;
+}
+.comm-date {
+  float: right;
+}
+.comm-user {
+  font-family: times;
+  font-size: 14px !important;
 }
