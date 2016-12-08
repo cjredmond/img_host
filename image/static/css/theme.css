@@ -121,3 +121,8 @@ body {
   font-family: times;
   font-size: 14px !important;
 }
+.desc {
+  font-size: 16px;
+  height: 30px;
+  padding-top: 5px;
+}
