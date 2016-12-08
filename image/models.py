@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime, timezone, timedelta
+
 
 class Image(models.Model):
     user = models.ForeignKey('auth.User')
@@ -31,6 +33,15 @@ class Comment(models.Model):
 
     def score(self):
         return sum([vote.score for vote in self.vote_set.all()])
+
+    @property
+    # def time_ago(self):
+    #     now = datetime.now()
+    #     print(now - self.time)
+    #     return datetime.now() - self.time
+
+    def day(self):
+        return self.time
 
 
 class Vote(models.Model):

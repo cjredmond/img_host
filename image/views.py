@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from image.models import Image, Comment, Vote
+from image.models import Image, Comment, Vote, CommentVote
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse, reverse_lazy
 from django.core.exceptions import ObjectDoesNotExist
@@ -106,4 +106,21 @@ class ImageVoteView(CreateView):
         instance = form.save(commit=False)
         instance.user = self.request.user
         instance.image = Image.objects.get(id=self.kwargs['pk'])
+        return super().form_valid(form)
+
+class CommentVoteView(CreateView):
+    model = CommentVote
+    fields = ('value',)
+    def get_success_url(self, **kwargs):
+        target = Image.objects.get(id=self.kwargs['pk'])
+        return reverse_lazy('image_detail_view', args=(target.id,))
+
+    def form_valid(self, form):
+        try:
+            CommentVote.objects.get(user=self.request.user, comment_id=self.kwargs['pk']).delete()
+        except CommentVote.DoesNotExist:
+            pass
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        instance.comment = Comment.objects.get(id=self.kwargs['pk'])
         return super().form_valid(form)

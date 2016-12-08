@@ -2,6 +2,10 @@
   height: 45vh;
   width: 60vh;
 }
+
+body {
+  background-color: black;
+}
 .smaller {
   max-height: 40vh;
   min-height: 40vh;
@@ -27,7 +31,7 @@
 
 .center {
   text-align: center;
-  color: blue;
+  color: silver;
 }
 
 .left {
@@ -51,14 +55,23 @@
 .score {
   font-size: 30px;
   margin-bottom: 0px;
+  color: white;
 }
 
 .score_number {
   font-size: 30px;
+  color: white;
 }
 
 .comm {
-  border-bottom: 1px solid silver;
+  border: 1px solid darkgrey;
+  background-color: #404040;
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  padding-left: 3px;
 }
 
 .over {
@@ -67,4 +80,30 @@
 
 .resize-btn {
   width: 40px !important;
+}
+
+.comment-input {
+  width: 450px;
+  height: 40px;
+  font-size: 16px;
+  background-color: grey;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.comment-submit {
+  width: 120px;
+  height: 40px;
+  background-color: grey;
+  color: white;
+  float: right !important;
+}
+
+.comm-info {
+  font-size: 12px;
+}
+
+.comment-btn {
+  height: 5px !important;
+  width: 10px !important;
 }
