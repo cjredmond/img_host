@@ -1,0 +1,5 @@
+-This app was built during week 7 of the Iron Yard backend course
+-Added comment voting feature after the Iron Yard was complete
+-Built to mimic Imgur.com
+-Users can create an account, log in and post pictures
+-Pictures can be commented on and voted on by users
